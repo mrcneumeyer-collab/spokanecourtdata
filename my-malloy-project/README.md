@@ -5,8 +5,8 @@ Do outcomes vary by case type?
 Which locations have the most cases?
 Are there patterns over time (Start date)?
 
-images
-![Total Cases]/(images/Screenshot 2026-04-23 214428.png).
+
+
 
 
 
@@ -21,20 +21,6 @@ Most common location: Courtroom B — 3,305 records
 Most common hearing type: Pretrial Conference — 2,680 records
 Most common result: Cancelled — 2,722 records
 Date range: March 2, 2026 to April 22, 2026
-
-
-
- Number of Criminal Cases Filed by Court
-
-![Cases by Court](images/cases_by_court.png)
-
-This visualization shows the number of criminal cases filed across different courts. One thing that stands out is how much higher the volume is in larger counties like King County compared to others.
-
-Although my dataset focuses on Spokane Municipal Court, this broader view helps provide important context. It shows that while Spokane handles a significant number of cases, it is part of a much larger statewide system with varying levels of activity.
-
-This comparison helped me better understand where Spokane fits within the overall court system and reinforced the importance of analyzing local data within a broader context.
-
-
 
 
 
