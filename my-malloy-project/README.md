@@ -5,11 +5,16 @@ Do outcomes vary by case type?
 Which locations have the most cases?
 Are there patterns over time (Start date)?
 
+
 ## Total Criminal Cases Filed
 
 ![Total Charges](images/totalcharges.png)
 
-This visualization shows the total number of criminal cases filed, which is 21,157. This provides important context for understanding the scale of activity within the court system.
+This visualization highlights the total number of criminal cases filed, which is 21,157. This provides important context for understanding the overall scale of activity within the court system.
+
+Seeing this volume helps put the rest of the analysis into perspective. The patterns identified in case types, outcomes, and locations are not based on a small sample, but instead reflect trends across thousands of real cases.
+
+This also reinforces how active the court system is, helping explain why patterns such as repeated hearings, open cases, and cancellations appear frequently in the data.
 
 ![Total Cases](images/totalcharges.png)
 
