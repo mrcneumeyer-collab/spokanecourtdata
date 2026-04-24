@@ -5,7 +5,8 @@ Do outcomes vary by case type?
 Which locations have the most cases?
 Are there patterns over time (Start date)?
 
-
+images
+/Screenshot 2026-04-23 214428.png
 
 
 
