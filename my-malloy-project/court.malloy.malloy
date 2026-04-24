@@ -1,0 +1,70 @@
+source: spokane_court is duckdb.sql("""
+  SELECT *
+  FROM read_csv_auto('spokanecourtdatamneumeyer.csv', header=true)
+""")
+
+run: spokane_court -> {
+  select:
+    *
+  limit: 50
+}
+
+run: spokane_court -> {
+  aggregate:
+    total_cases is count()
+}
+
+run: spokane_court -> {
+  group_by:
+    case_type is "Case Type"
+  aggregate:
+    total_cases is count()
+  order_by:
+    total_cases desc
+}
+
+run: spokane_court -> {
+  group_by:
+    case_status is "Case Status"
+  aggregate:
+    total_cases is count()
+  order_by:
+    total_cases desc
+}
+
+run: spokane_court -> {
+  group_by:
+    result_type is "Result Type"
+  aggregate:
+    total_cases is count()
+  order_by:
+    total_cases desc
+}
+
+run: spokane_court -> {
+  group_by:
+    case_type is "Case Type"
+    result_type is "Result Type"
+  aggregate:
+    total_cases is count()
+  order_by:
+    total_cases desc
+}
+
+run: spokane_court -> {
+  group_by:
+    case_location is Location
+  aggregate:
+    total_cases is count()
+  order_by:
+    total_cases desc
+}
+
+run: spokane_court -> {
+  group_by:
+    start_date is Start
+  aggregate:
+    total_cases is count()
+  order_by:
+    start_date
+}

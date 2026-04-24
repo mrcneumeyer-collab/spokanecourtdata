@@ -1,0 +1,114 @@
+>>>markdown
+# Spokane Court Data Story (Malloy Notebook)
+
+## Introduction
+
+Through my work with Spokane Community Against Racism (SCAR), I have spent time sitting in and observing court proceedings over the past couple of months. While I was able to see how individual cases move through the system, I became curious whether there were larger patterns behind what I was observing.
+
+I wanted to know: **what types of cases are most common, and do they follow consistent outcome patterns?**
+
+---
+
+## Step 1: What types of cases appear most often?
+>>>malloy
+source: spokane_court is duckdb.sql("""
+  SELECT *
+  FROM read_csv_auto('spokanecourtdatamneumeyer.csv', header=true)
+""")
+>>>malloy
+run: spokane_court -> {
+  group_by:
+    case_type is "Case Type"
+  aggregate:
+    total_cases is count()
+  order_by:
+    total_cases desc
+}
+>>>markdown
+Insight
+
+I found that misdemeanor non-traffic cases dominate the dataset. This matched what I observed in court, where most of the hearings I sat in on involved lower-level offenses.
+>>>markdown
+Step 2: What are the most common outcomes?
+>>>malloy
+run: spokane_court -> {
+  group_by:
+    result_type is "Result Type"
+  aggregate:
+    total is count()
+  order_by:
+    total desc
+}
+>>>markdown
+Insight
+
+The most common outcomes were cancelled and open cases.
+
+This stood out because, while observing court sessions, I often noticed that many cases did not reach a final resolution right away. The data confirmed that this is not just anecdotal—it is a consistent pattern.
+>>>markdown
+Step 3: Do case types influence outcomes?
+>>>malloy
+run: spokane_court -> {
+  group_by:
+    case_type is "Case Type"
+    result_type is "Result Type"
+  aggregate:
+    total is count()
+  order_by:
+    total desc
+}
+>>>markdown
+Insight (KEY DISCOVERY)
+
+This was the most interesting finding.
+
+I noticed that:
+
+Some case types had very consistent outcomes
+Others showed a wide range of results
+
+This suggests that not all cases move through the system the same way, even if they are processed in the same courts.
+>>>markdown
+Step 4: Where are these cases happening?
+>>>malloy
+run: spokane_court -> {
+  group_by:
+    case_location is Location
+  aggregate:
+    total is count()
+  order_by:
+    total desc
+}
+>>>markdown
+Insight
+
+Certain courtrooms handled a much higher volume of cases.
+
+This matched my experience with SCAR, where I frequently observed sessions in specific rooms that were consistently busy.
+>>>markdown
+Step 5: How does activity change over time?
+>>>malloy
+run: spokane_court -> {
+  group_by:
+    start_date is Start
+  aggregate:
+    total is count()
+  order_by:
+    start_date
+}
+>>>markdown
+Insight
+
+Even within a short timeframe, case volume fluctuates.
+
+This helped connect individual court sessions to broader patterns over time.
+>>>markdown
+Final Reflection
+
+I started this project curious about whether my experience sitting in court reflected broader patterns in the data.
+
+What I found was that many of my observations—such as the prevalence of misdemeanor cases and the frequency of unresolved outcomes—were consistent across thousands of records.
+
+However, the data also revealed patterns I would not have noticed just from observation alone, especially the relationship between case type and outcome.
+
+This project showed me how combining real-world experience (SCAR) with data analysis (Malloy) can create a much deeper understanding of systems that are otherwise difficult to interpret.
