@@ -9,8 +9,7 @@ Total records: 12,065 court records
 
 Total Criminal Cases Filed
 
-![Total Cases](<img width="1385" height="529" alt="Screenshot 2026-04-23 214428" src="https://github.com/user-attachments/assets/f8f5b285-110d-4281-9123-d147ef8096fb" />
-)
+![Total Cases](images/totalcharges.png)
 
 This visualization shows the total number of criminal cases filed, which is 21,157. This provides important context for understanding the scale of activity within the court system.
 
